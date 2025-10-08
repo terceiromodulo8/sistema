@@ -1,0 +1,81 @@
+/* Importa uma fonte simples e elegante para o nome da escola. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+/* Estilos para o corpo da página, centralizando o conteúdo. */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #678dab;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Estilos para o contêiner principal do formulário de login. */
+.login-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+}
+
+/* Estilos para a fonte e cor do nome da escola. */
+.escola-nome {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.2em;
+  /* Tamanho da fonte ajustado para o nome completo */
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+/* Estilos para o título e outros elementos de texto. */
+.login-container h2 {
+  margin-bottom: 24px;
+  color: #333;
+}
+
+/* Estilos para os campos de entrada do formulário (usuário e senha). */
+.form-group {
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+/* Estilos para os rótulos e os campos de input. */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  /* Cor da borda para destacar */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* Fundo levemente cinza para contraste */
+  background-color: #c9c5c5;
+  box-sizing: border-box;
+  /* Efeito de foco para mostrar que o campo está ativo */
+  outline: none;
+}
+
+/* Estilos para o botão de login, incluindo o efeito ao passar o mouse. */
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
