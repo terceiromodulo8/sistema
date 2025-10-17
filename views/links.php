@@ -11,7 +11,7 @@
   <!-- Botão de sair -->
   <form action="/sistema/" method="POST"> <!-- Se for uma ação, método POST -->
     <!-- Esse input não aparece na tela mas é necessário para redirecionar, não precisa estilizar mas não apaguem. -->
-    <input type="hidden" name="action" value="logout">
+    <input type="hidden" name="acao" value="logout">
     <button>Sair</button>
   </form>
 

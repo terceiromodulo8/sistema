@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 <?php
 
 /**
@@ -19,7 +17,7 @@ class Material
     private $nome;
 
     /**
-     * @var string Descrição detalhada do produto (Campo do formulário, 
+     * @var string Descrição detalhada do produto (Campo do formulário,
      * * * Nota: Não mapeado diretamente na tabela SQL 'produtos_limpeza').
      */
     private $descricao;
@@ -34,22 +32,21 @@ class Material
      */
     private $dataValidade;
 
-
     // Construtor
     // =========================================================
 
     public function __construct(
-        ?int $id,
         string $nome,
         string $descricao,
         int $quantidadeEstoque,
-        string $dataValidade
+        string $dataValidade,
+        ?int $id = null
     ) {
-        $this->id = $id;
-        $this->nome = $nome;
-        $this->descricao = $descricao;
+        $this->id                = $id;
+        $this->nome              = $nome;
+        $this->descricao         = $descricao;
         $this->quantidadeEstoque = $quantidadeEstoque;
-        $this->dataValidade = $dataValidade;
+        $this->dataValidade      = $dataValidade;
     }
 
     // Métodos Getter
@@ -80,4 +77,3 @@ class Material
         return $this->dataValidade;
     }
 }
->>>>>>> Stashed changes

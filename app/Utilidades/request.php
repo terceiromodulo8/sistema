@@ -11,12 +11,12 @@ function paginaAtual(): string
 
 function definirAcao(string $action)
 {
-    $_SESSION['action'] = $action;
+    $_SESSION['acao'] = $action;
 }
 
-function acaoAtual(): string
+function acaoAtual(): string | null
 {
-    return $_SESSION['action'];
+    return $_SESSION['acao'];
 }
 
 function limparPagina()
@@ -26,5 +26,5 @@ function limparPagina()
 
 function limparAcao()
 {
-    unset($_SESSION['action']);
+    unset($_SESSION['acao']);
 }
