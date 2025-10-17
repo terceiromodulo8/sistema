@@ -1,39 +1,41 @@
 <?php
+require_once __DIR__ . "/../Modelo/Entidade/Material.php";
+
 /**
- * @param array $request = ['method' => 'GET', 'page' => ''] || ['method' => 'POST', 'action' => '']
+ * @param array $request = ['metodo' => 'GET', 'pagina' => ''] || ['metodo' => 'POST', 'acao' => '']
  */
 function materiaisControlador(array $request)
 {
-    if ($request['method'] === 'POST') {
-        adicionarProduto();
+    if ($request['metodo'] === 'POST') {
+        adicionarMaterial();
         exit;
     }
 
-    if ($request['method'] === 'GET') {
-        switch ($request['page']) {
+    if ($request['metodo'] === 'GET') {
+        switch ($request['pagina']) {
             case 'adicionar':
                 require __DIR__ . '/../../views/materiais/adicionar.php';
                 exit;
 
             case 'exibir':
-                exibirProduto();
+                exibirMaterial();
                 exit;
 
             case 'listar':
-                listarProdutos();
+                listarMateriais();
                 exit;
         }
     }
 }
 
-function adicionarProduto()
+function adicionarMaterial()
 {
-    $nomeProduto       = trim($_POST['nome_do_produto'] ?? '');
-    $descricaoProduto  = trim($_POST['descricao'] ?? '');
-    $quantidadeProduto = (int) ($_POST['quantidade_em_estoque'] ?? -1);
-    $validadeProduto   = trim($_POST['data_validade']) ?? date('Y-m-d');
+    $nomeMaterial       = trim($_POST['nome_produto'] ?? '');
+    $descricaoMaterial  = trim($_POST['descricao'] ?? '');
+    $quantidadeMaterial = (int) ($_POST['quantidade_em_estoque'] ?? -1);
+    $validadeMaterial   = trim($_POST['data_validade']) ?? date('Y-m-d');
 
-    if (! $nomeProduto || $nomeProduto == '') {
+    if (! $nomeMaterial || $nomeMaterial == '') {
         $_SESSION['erro'] = [
             'codigo'   => 400,
             'campo'    => 'nome_do_produto',
@@ -42,7 +44,7 @@ function adicionarProduto()
         header('Location: /sistema/');
         exit;
     }
-    if (! $descricaoProduto || $descricaoProduto == '') {
+    if (! $descricaoMaterial || $descricaoMaterial == '') {
         $_SESSION['erro'] = [
             'codigo'   => 400,
             'campo'    => 'descricao',
@@ -51,7 +53,7 @@ function adicionarProduto()
         header('Location: /sistema/');
         exit;
     }
-    if (! $quantidadeProduto || $quantidadeProduto < 0) {
+    if (! $quantidadeMaterial || $quantidadeMaterial < 0) {
         $_SESSION['erro'] = [
             'codigo'   => 400,
             'campo'    => 'quantidade_em_estoque',
@@ -60,7 +62,7 @@ function adicionarProduto()
         header('Location: /sistema/');
         exit;
     }
-    if (! $validadeProduto || $validadeProduto == '') {
+    if (! $validadeMaterial || $validadeMaterial == '') {
         $_SESSION['erro'] = [
             'codigo'   => 400,
             'campo'    => 'data_validade',
@@ -69,7 +71,7 @@ function adicionarProduto()
         header('Location: /sistema/');
         exit;
     }
-    if ($validadeProduto < date('Y-m-d')) {
+    if ($validadeMaterial < date('Y-m-d')) {
         $_SESSION['erro'] = [
             'codigo'   => 400,
             'campo'    => 'data_validade',
@@ -78,7 +80,8 @@ function adicionarProduto()
         header('Location: /sistema/');
         exit;
     }
-    echo '<script>alert("Operação não implementada. Retornando para a página inicial")</script>';
+
+    $material = new Material($nomeMaterial, $descricaoMaterial, $quantidadeMaterial, $validadeMaterial);
     // TODO: Inserção no banco de dados
     definirPagina('/listar');
     /* TODO: Exibir erro no front-end
@@ -102,12 +105,12 @@ function adicionarProduto()
     exit;
 }
 
-function listarProdutos()
+function listarMateriais()
 {
     require __DIR__ . '/../../views/materiais/listar.php';
 }
 
-function exibirProduto()
+function exibirMaterial()
 {
     if (! isset($_SESSION['produto'])) {
         // TODO: prevenção de erros

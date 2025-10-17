@@ -36,10 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['action'])) {
-        definirAcao($_POST['action']);
+    if (isset($_POST['acao'])) {
+        definirAcao($_POST['acao']);
     }
-
     switch (acaoAtual()) {
         case 'login':
             loginControlador(['metodo' => 'POST', 'acao' => 'login']);
